@@ -2,11 +2,9 @@ FROM node:latest as build
 RUN mkdir /app
 COPY . /app
 WORKDIR  /app
-RUN npm install -g typings webpack typescript webpack-cli
+RUN npm install -g webpack typescript webpack-cli
 RUN npm install -g --only=dev
 RUN npm install
-RUN npm link typescript
-RUN typings install --global --save-dev dt~pixi.js
 RUN webpack 
 
 FROM node:alpine
